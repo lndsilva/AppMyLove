@@ -1,8 +1,10 @@
 package br.com.etecia.appmylove;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginActivity extends AppCompatActivity {
     Button btnEntrar, btnSair;
     TextInputEditText txtUsuario, txtSenha;
+    TextView txtNaoTemSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,23 @@ public class LoginActivity extends AppCompatActivity {
 
         btnEntrar = findViewById(R.id.btnEntrar);
         btnSair = findViewById(R.id.btnSair);
+        txtNaoTemSenha = findViewById(R.id.txtSemCadastro);
+
+        btnEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MenuPrincipalActivity.class));
+                finish();
+            }
+        });
+
+        txtNaoTemSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CadUsuariosActivity.class));
+                finish();
+            }
+        });
 
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
